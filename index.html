@@ -585,7 +585,47 @@
             </li>
           </ul>
         </div>
+
+        <div class="form-section">
+          <form class="footer-subscribe-form">
+            <label class="footer-form-label" id="email"
+              >Subscribe
+              <input
+                class="footer-form"
+                type="email"
+                name="email"
+                id="type-email"
+                placeholder="E-mail"
+              />
+            </label>
+            <button class="button-subscribe" type="submit">
+              Subscribe
+              <div class="form-subscribe-icon-sec">
+                <svg
+                  class="form-subscribe-icon"
+                  widht="24"
+                  height="24"
+                  aria-label="icon-subscribe"
+                >
+                  <use href="./images/icons.svg#icon-subscribe"></use>
+                </svg>
+              </div>
+            </button>
+          </form>
+        </div>
       </div>
     </footer>
+    <div class="backdrop">
+      <div class="modal">
+        <button class="close-btn" type="button">
+          <svg class="close-btn-icon" wih="8" height="8">
+            <use href="./images/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+        <p class="backdrop-text">
+          Leave your contacts and we will call you back
+        </p>
+      </div>
+    </div>
   </body>
 </html>
