@@ -462,7 +462,6 @@ body {
 .footer-logotype {
   display: inline-block;
   margin-bottom: 16px;
-  margin-right: 269px;
 }
 .footer-social-links {
   width: 40px;
@@ -482,15 +481,17 @@ body {
 .footer-link-item:focus {
   background-color: #31d0aa;
 }
-
+.footer-link-sec {
+  margin-right: 120px;
+}
 /* footer-form */
 .footer-subscribe-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 80px;
 }
-.footer-form-label {
+.pre-form-text {
+  margin-bottom: 16px;
   color: #ffffff;
   font-size: 16px;
   font-weight: 500;
@@ -501,14 +502,15 @@ body {
   width: 264px;
   height: 40px;
   color: #ffffff;
+  padding: 8px 16px;
   font-size: 12px;
   font-weight: 400;
   line-height: 2;
   letter-spacing: 0.04em;
   border-radius: 4px;
-  border: 1px solid var(--WHITE, #fff);
+  border: 1px solid #ffffff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
-  background: var(--NAVY-BLUE, #2e2f42);
+  background: #2e2f42;
   margin-right: 24px;
 }
 .footer-form::placeholder {
@@ -520,26 +522,24 @@ body {
 }
 .button-subscribe {
   display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 4px;
+  border: none;
   background: #4d5ae5;
   gap: 16px;
   padding: 8px 24px;
   height: 40px;
   width: 165px;
   color: #ffffff;
-  font-family: 'Roboto', sans-serif;
   text-align: center;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  position: relative;
 }
 .form-subscribe-icon {
-  max-width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  fill: #ffffff;
 }
 
 /* overlay window */
@@ -551,6 +551,16 @@ body {
   height: 100%;
   background-color: rgba(46, 47, 66, 0.4);
   z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visability 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 .modal {
   position: absolute;
@@ -571,17 +581,36 @@ body {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
+  margin-bottom: 16px;
 }
 .close-btn {
+  position: absolute;
   background-color: transparent;
-  border: none;
+  right: 24px;
+  top: 24px;
   width: 24px;
   height: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
-  fill: rgba(0, 0, 0, 0.1);
-  position: absolute;
-  right: 0;
-  top: 0;
+  cursor: pointer;
+  fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close-btn:focus,
+.close-btn:hover {
+  background-color: #404bbf;
+}
+.close-btn:focus .close-btn-icon,
+.close-btn:hover .close-btn-icon {
+  fill: #ffffff;
+}
+.form-wrapper {
+  margin-bottom: 8px;
 }
 .form-wrapper-input {
   width: 100%;
@@ -591,6 +620,7 @@ body {
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   outline: 0px solid transparent;
+  padding-left: 38px;
 }
 .form-wrapper-input:focus {
   border: 1px solid #4d5ae5;
@@ -599,7 +629,10 @@ body {
   fill: #4d5ae5;
 }
 .textarea-input {
+  width: 100%;
   resize: none;
+  padding: 8px 16px;
+  margin-bottom: 16px;
 }
 .textarea-input::placeholder {
   color: #2e2f4266;
@@ -615,6 +648,42 @@ body {
   line-height: 1.17;
   letter-spacing: 0.04em;
 }
+.checkbox {
+  margin-bottom: 24px;
+}
+.custom-checkbox {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #2e2f4266;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.custom-checkbox {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+.checkbox-icon {
+  fill: #ffffff;
+  opacity: 0;
+}
+.checkbox-input:checked + .accept-form-label > .custom-checkbox {
+  background-color: #404bbf;
+  border-color: #404bbf;
+}
+.checkbox-input:checked + .accept-form-label .checkbox-icon {
+  opacity: 1;
+}
+.checkbox-input:focus + .accept-form-label > .custom-checkbox {
+  outline: 1px solid #4d5ae5;
+}
+.send-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .backdrop-btn {
   cursor: pointer;
   color: #fff;
@@ -624,7 +693,8 @@ body {
   line-height: 1.5;
   letter-spacing: 0.04em;
   padding: 16px 32px;
-  width: 105px;
+  width: 169px;
+  height: 56px;
   border-radius: 4px;
   background: #4d5ae5;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
