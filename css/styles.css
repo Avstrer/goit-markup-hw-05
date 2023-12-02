@@ -618,6 +618,7 @@ body {
 .close-btn:focus,
 .close-btn:hover {
   background-color: #404bbf;
+  border: none;
 }
 .close-btn:focus .close-btn-icon,
 .close-btn:hover .close-btn-icon {
